@@ -17,7 +17,7 @@ class HrSpider(scrapy.Spider):
             yield item
         
         next_url = response.xpath("//a[@id='next']/@href").extract_first()
-        if next_url != 'javascript:;':
+        if next_url != 'javascript:;': #判断是否为最后一页
             next_url = 'https://hr.tencent.com/' + next_url
             yield scrapy.Request(
                 next_url,
